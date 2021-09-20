@@ -30,7 +30,14 @@
                             <outlet property="delegate" destination="aF2-EL-Mmj" id="3Nf-Qj-InY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Activities" id="g7A-i5-Loh"/>
+                    <navigationItem key="navigationItem" title="Activities" id="g7A-i5-Loh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Pa-b4-UqQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addActivityClicked:" destination="aF2-EL-Mmj" id="Ls3-mz-g26"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugh-JS-te3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -45,6 +52,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1065748557" green="0.68081343169999997" blue="0.49801701310000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

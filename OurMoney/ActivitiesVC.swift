@@ -36,4 +36,26 @@ class ActivitiesVC: UITableViewController {
         let selectedCell = tableView.cellForRow(at: indexPath)
         selectedCell?.accessoryType = (selectedCell?.accessoryType == .checkmark) ? .none : .checkmark
     }
+    
+    
+    @IBAction func addActivityClicked(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Add Activity", message: "You can add activity with these informations", preferredStyle: .alert)
+        alert.addTextField { txtActivityName in
+            txtActivityName.placeholder = "Activity Name"
+        }
+        
+        
+        let addAction = UIAlertAction(title: "Add", style: .default) { action in
+            let activityName = alert.textFields![0]
+            print(activityName.text)
+            if !activityName.text!.isEmpty {
+                self.activities.append(activityName.text!)
+                self.tableView.reloadData()
+            }
+            
+        }
+        alert.addAction(addAction)
+        present(alert, animated: true, completion: nil)
+        print(activities)
+    }
 }
