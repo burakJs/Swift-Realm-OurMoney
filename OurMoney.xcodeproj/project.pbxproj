@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A45ED41626FB4E26007D1AA3 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ED41526FB4E26007D1AA3 /* Activity.swift */; };
+		A45ED41826FB9606007D1AA3 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ED41726FB9606007D1AA3 /* PaymentVC.swift */; };
 		A4A70EDD26F87C7300E4F714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70EDC26F87C7300E4F714 /* AppDelegate.swift */; };
 		A4A70EDF26F87C7300E4F714 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70EDE26F87C7300E4F714 /* SceneDelegate.swift */; };
 		A4A70EE426F87C7300E4F714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4A70EE226F87C7300E4F714 /* Main.storyboard */; };
 		A4A70EE626F87C7500E4F714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A70EE526F87C7500E4F714 /* Assets.xcassets */; };
 		A4A70EE926F87C7500E4F714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4A70EE726F87C7500E4F714 /* LaunchScreen.storyboard */; };
 		A4A70EF126F87D0E00E4F714 /* ActivitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70EF026F87D0E00E4F714 /* ActivitiesVC.swift */; };
+		A4A70EF326F90DDD00E4F714 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70EF226F90DDD00E4F714 /* Keys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A45ED41526FB4E26007D1AA3 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		A45ED41726FB9606007D1AA3 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		A4A70ED926F87C7300E4F714 /* OurMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A70EDC26F87C7300E4F714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4A70EDE26F87C7300E4F714 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		A4A70EE826F87C7500E4F714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4A70EEA26F87C7500E4F714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4A70EF026F87D0E00E4F714 /* ActivitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesVC.swift; sourceTree = "<group>"; };
+		A4A70EF226F90DDD00E4F714 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +65,13 @@
 				A4A70EDC26F87C7300E4F714 /* AppDelegate.swift */,
 				A4A70EDE26F87C7300E4F714 /* SceneDelegate.swift */,
 				A4A70EF026F87D0E00E4F714 /* ActivitiesVC.swift */,
+				A45ED41526FB4E26007D1AA3 /* Activity.swift */,
 				A4A70EE226F87C7300E4F714 /* Main.storyboard */,
+				A45ED41726FB9606007D1AA3 /* PaymentVC.swift */,
 				A4A70EE526F87C7500E4F714 /* Assets.xcassets */,
 				A4A70EE726F87C7500E4F714 /* LaunchScreen.storyboard */,
 				A4A70EEA26F87C7500E4F714 /* Info.plist */,
+				A4A70EF226F90DDD00E4F714 /* Keys.swift */,
 			);
 			path = OurMoney;
 			sourceTree = "<group>";
@@ -137,7 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A45ED41626FB4E26007D1AA3 /* Activity.swift in Sources */,
+				A45ED41826FB9606007D1AA3 /* PaymentVC.swift in Sources */,
 				A4A70EDD26F87C7300E4F714 /* AppDelegate.swift in Sources */,
+				A4A70EF326F90DDD00E4F714 /* Keys.swift in Sources */,
 				A4A70EDF26F87C7300E4F714 /* SceneDelegate.swift in Sources */,
 				A4A70EF126F87D0E00E4F714 /* ActivitiesVC.swift in Sources */,
 			);
