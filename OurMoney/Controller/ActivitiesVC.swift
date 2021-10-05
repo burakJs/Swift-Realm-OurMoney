@@ -43,10 +43,9 @@ class ActivitiesVC: UITableViewController, UISearchBarDelegate {
         }
         
         if activityList?[indexPath.row].isChecked ?? false {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+            cell.backgroundColor = .darkGray
+            cell.textLabel?.textColor = .white
+        } 
         return cell
     }
     
@@ -110,21 +109,21 @@ class ActivitiesVC: UITableViewController, UISearchBarDelegate {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if let selectedActivity = activityList?[indexPath.row] {
-                do {
-                    try realm.write {
-                        realm.delete(selectedActivity.payments)
-                        realm.delete(selectedActivity)
-                    }
-                } catch {
-                    print("Error in deleting activities : \(error.localizedDescription)")
-                }
-            }
-        }
-        tableView.reloadData()
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            if let selectedActivity = activityList?[indexPath.row] {
+//                do {
+//                    try realm.write {
+//                        realm.delete(selectedActivity.payments)
+//                        realm.delete(selectedActivity)
+//                    }
+//                } catch {
+//                    print("Error in deleting activities : \(error.localizedDescription)")
+//                }
+//            }
+//        }
+//        tableView.reloadData()
+//    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         activityList = activityList?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "name", ascending: true)
@@ -139,9 +138,42 @@ class ActivitiesVC: UITableViewController, UISearchBarDelegate {
             }
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){_,_,_ in
+            if let selectedActivity = self.activityList?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        self.realm.delete(selectedActivity.payments)
+                        self.realm.delete(selectedActivity)
+                    }
+                } catch {
+                    print("Error in deleting activities : \(error.localizedDescription)")
+                }
+            }
+            tableView.reloadData()
+        }
+        
+        let completeAction = UIContextualAction(style: .normal, title: "Completed"){_,_,_ in
+            if let selectedActivity = self.activityList?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        selectedActivity.isChecked = true
+                    }
+                } catch {
+                    print("Error in deleting activities : \(error.localizedDescription)")
+                }
+            }
+            tableView.reloadData()
+        }
+        
+        completeAction.backgroundColor = #colorLiteral(red: 0, green: 0.7529165149, blue: 0.5437087417, alpha: 1)
+        let swipe = UISwipeActionsConfiguration(actions: [completeAction,deleteAction])
+        return swipe
     }
 }
