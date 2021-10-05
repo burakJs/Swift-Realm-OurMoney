@@ -33,7 +33,14 @@ class ActivitiesVC: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = activityList?[indexPath.row].name ?? "Aktivite Bulunamadı"
+        
+        let result: Int = activityList?[indexPath.row].payments.sum(ofProperty: "count") ?? 0
+        
+        if let name = activityList?[indexPath.row].name {
+            cell.textLabel?.text = "\(name) - \(result)₺"
+        } else {
+            cell.textLabel?.text = "Activity Not Found"
+        }
         
         if activityList?[indexPath.row].isChecked ?? false {
             cell.accessoryType = .checkmark
@@ -128,8 +135,13 @@ class ActivitiesVC: UITableViewController, UISearchBarDelegate {
         if searchBar.text?.count == 0 {
             loadData()
             DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
+                self.searchBar.resignFirstResponder()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 }

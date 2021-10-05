@@ -61,9 +61,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="sWH-dt-X9k">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentCell" id="1Nc-IL-8JS">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Nc-IL-8JS" id="ome-dY-F7d">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -85,6 +90,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchbar" destination="sWH-dt-X9k" id="xzN-Tp-3e7"/>
                         <segue destination="bTT-oB-3UO" kind="show" identifier="editPaymentSegue" id="80m-Le-VsQ"/>
                     </connections>
                 </tableViewController>
@@ -176,21 +182,41 @@
                                     <action selector="updatClicked:" destination="bTT-oB-3UO" eventType="touchUpInside" id="7ML-Gb-FYE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name : _________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCN-4i-R2n">
+                                <rect key="frame" x="20" y="419" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Payments : _____₺     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyH-4c-O5Z">
+                                <rect key="frame" x="20" y="463" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Q8p-pF-A27"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dso-lp-Mek" firstAttribute="centerX" secondItem="368-i0-Jei" secondAttribute="centerX" id="1XL-eb-d95"/>
+                            <constraint firstItem="Q8p-pF-A27" firstAttribute="trailing" secondItem="OyH-4c-O5Z" secondAttribute="trailing" constant="20" id="3vj-rc-9pX"/>
+                            <constraint firstItem="bCN-4i-R2n" firstAttribute="top" secondItem="x0G-Q1-Sur" secondAttribute="bottom" constant="20" id="9Rw-xn-tEb"/>
                             <constraint firstItem="Q8p-pF-A27" firstAttribute="trailing" secondItem="KCr-vx-g64" secondAttribute="trailing" constant="100" id="CqK-Eg-I9w"/>
                             <constraint firstItem="KCr-vx-g64" firstAttribute="top" secondItem="dso-lp-Mek" secondAttribute="bottom" constant="30" id="PHI-m9-VtU"/>
                             <constraint firstItem="x0G-Q1-Sur" firstAttribute="leading" secondItem="Q8p-pF-A27" secondAttribute="leading" constant="20" id="fDc-i8-g98"/>
+                            <constraint firstItem="Q8p-pF-A27" firstAttribute="trailing" secondItem="bCN-4i-R2n" secondAttribute="trailing" constant="20" id="hPv-yN-fLz"/>
                             <constraint firstItem="dso-lp-Mek" firstAttribute="top" secondItem="Q8p-pF-A27" secondAttribute="top" constant="35" id="i2Y-dH-P4q"/>
+                            <constraint firstItem="OyH-4c-O5Z" firstAttribute="top" secondItem="bCN-4i-R2n" secondAttribute="bottom" constant="20" id="ifg-qg-bqT"/>
                             <constraint firstItem="x0G-Q1-Sur" firstAttribute="top" secondItem="KCr-vx-g64" secondAttribute="bottom" constant="15" id="nfU-by-SaU"/>
                             <constraint firstItem="KCr-vx-g64" firstAttribute="leading" secondItem="Q8p-pF-A27" secondAttribute="leading" constant="20" id="swj-iD-jGD"/>
+                            <constraint firstItem="OyH-4c-O5Z" firstAttribute="leading" secondItem="Q8p-pF-A27" secondAttribute="leading" constant="20" id="yud-ff-l9S"/>
+                            <constraint firstItem="bCN-4i-R2n" firstAttribute="leading" secondItem="Q8p-pF-A27" secondAttribute="leading" constant="20" id="zgQ-uc-0R6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit" id="bUh-ii-hXg"/>
                     <connections>
+                        <outlet property="activityName" destination="bCN-4i-R2n" id="hsi-cH-SCb"/>
+                        <outlet property="lblTotalPayments" destination="OyH-4c-O5Z" id="dcy-ih-y3n"/>
                         <outlet property="txtAmount" destination="urf-bW-neG" id="njD-uh-DSH"/>
                         <outlet property="txtDescription" destination="ZaB-HS-l4Q" id="CPB-P0-r5b"/>
                         <outlet property="txtName" destination="kVG-Al-9FM" id="dRh-Op-f7N"/>

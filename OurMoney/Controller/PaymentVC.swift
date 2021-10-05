@@ -8,10 +8,11 @@
 import UIKit
 import RealmSwift
 
-class PaymentVC: UITableViewController {
+class PaymentVC: UITableViewController, UISearchBarDelegate {
     
     let realm = try! Realm()
     
+    @IBOutlet weak var searchbar: UISearchBar!
     var paymentList : Results<Payment>?
     
     var selectedActivity: Activity? {
@@ -22,7 +23,7 @@ class PaymentVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchbar.delegate = self
     }
 
     // MARK: - Table view data source
@@ -41,7 +42,7 @@ class PaymentVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "paymentCell", for: indexPath)
         
         if let payment = paymentList?[indexPath.row] {
-            cell.textLabel?.text = payment.name
+            cell.textLabel?.text = "\(payment.name) - \(payment.count)₺"
         } else {
             cell.textLabel?.text = "Henüz eklenen bir ödeme bulunamadı"
         }
@@ -88,6 +89,7 @@ class PaymentVC: UITableViewController {
     
     func loadPayments() {
         paymentList = selectedActivity?.payments.sorted(byKeyPath: "name", ascending: true)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,6 +102,7 @@ class PaymentVC: UITableViewController {
             if let selectedIndex = tableView.indexPathForSelectedRow {
                 if let selectedPayment = paymentList?[selectedIndex.row] {
                     destinationVC.selectedPayment = selectedPayment
+                    destinationVC.selectedActivity = selectedActivity
                     destinationVC.title = "\(selectedPayment.name) Payment Information"
                 }
             }
@@ -127,5 +130,20 @@ class PaymentVC: UITableViewController {
             }
         }
         tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        paymentList = paymentList?.filter("name CONTAINS[cd] %@", searchbar.text!).sorted(byKeyPath: "name", ascending: true)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchbar.text?.count == 0 {
+            loadPayments()
+            DispatchQueue.main.async {
+                self.searchbar.resignFirstResponder()
+            }
+    
+        }
     }
 }
